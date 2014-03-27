@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Pages' do
+describe 'Pagez' do
   context 'with ActiveRecord' do
     before do
       50.times do
@@ -14,7 +14,7 @@ describe 'Pages' do
 
     it 'works well with activerecord' do
       scope = Post.order('created_at desc')
-      page = Pages
+      page = Pagez
         .new(scope, per_page: 5)
 
       page.to_a.should eq(scope.limit(5).to_a)
@@ -25,7 +25,7 @@ describe 'Pages' do
 
     it 'paginates' do
       scope = Post.order('created_at desc')
-      page = Pages
+      page = Pagez
         .new(scope, per_page: 5)
       page.to_page(3)
 
@@ -33,7 +33,7 @@ describe 'Pages' do
       page.page.should eq(3)
       page.total.should eq(10)
 
-      page = Pages
+      page = Pagez
         .new(scope, per_page: 20)
       page.to_page(3).to_a.should eq(scope.limit(20).offset(40))
 
@@ -45,7 +45,7 @@ describe 'Pages' do
 
   it 'works also for arrays too' do
     array = (1..50).to_a
-    page = Pages.new(array, per_page: 10)
+    page = Pagez.new(array, per_page: 10)
     page.to_a.should eq(array.slice(0, 10))
     page.page.should eq(1)
 
@@ -58,7 +58,7 @@ describe 'Pages' do
 
   it 'can be converted to hash' do
     array = (1..50).to_a
-    page = Pages.new(array, per_page: 10)
+    page = Pagez.new(array, per_page: 10)
     page.to_h.should eq(
       page: 1,
       per_page: 10,

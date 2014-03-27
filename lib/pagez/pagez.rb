@@ -1,4 +1,4 @@
-class Pages
+class Pagez
   attr_reader :page, :per_page
 
   def initialize(paginatable, options = {})
