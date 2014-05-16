@@ -1,7 +1,7 @@
 pagez
 =====
 
-Pagination for ruby
+Micro pagination for ruby
 
 ## Install
 ```
